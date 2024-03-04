@@ -2,8 +2,11 @@
 
 AsyncWebServer server(80);
 
+
 EvilPortal::EvilPortal() {
 }
+char apName[MAX_AP_NAME_SIZE] = "PORTAL";
+char index_html[MAX_HTML_SIZE] = "TEST";
 
 void EvilPortal::setup() {
   this->runServer = false;
