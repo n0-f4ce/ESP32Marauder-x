@@ -6,3 +6,4 @@
 .history/
 .DS_Store*
 .gitignore
+esp32_marauder.ino.cpp
