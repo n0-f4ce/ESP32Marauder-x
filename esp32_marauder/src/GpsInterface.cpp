@@ -8,11 +8,11 @@ char nmeaBuffer[100];
 
 MicroNMEA nmea(nmeaBuffer, sizeof(nmeaBuffer));
 
-HardwareSerial Serial2(GPS_SERIAL_INDEX);
+// HardwareSerial Serial2(GPS_SERIAL_INDEX);
 
 void GpsInterface::begin() {
 
-  /*#ifdef MARAUDER_MINI
+  #ifdef MARAUDER_MINI
     pinMode(26, OUTPUT);
 
     delay(1);
@@ -22,9 +22,9 @@ void GpsInterface::begin() {
 
     Serial.println("Activated GPS");
     delay(100);
-  #endif*/
+  #endif
 
-  
+
   Serial2.begin(9600, SERIAL_8N1, GPS_TX, GPS_RX);
 
   MicroNMEA::sendSentence(Serial2, "$PSTMSETPAR,1201,0x00000042");
@@ -49,7 +49,7 @@ void GpsInterface::begin() {
     this->gps_enabled = false;
     Serial.println("GPS Not Found");
   }
-  
+
 
   this->type_flag=GPSTYPE_NATIVE; //enforce default
   this->disable_queue(); //init the queue, disabled, kill NULLs
@@ -130,7 +130,7 @@ void GpsInterface::enqueue(MicroNMEA& nmea){
                               this->text_cycles=0;
                             }
                           }
-                        
+
                         for(int i=0;i<size;i++){
                           this->text->add(this->text_in->get(i));
                         }
@@ -186,7 +186,7 @@ void GpsInterface::enqueue(MicroNMEA& nmea){
                             this->text_cycles=0;
                           }
                         }
-                      
+
                         for(int i=0;i<size;i++)
                           this->text->add(this->text_in->get(i));
 
@@ -224,7 +224,7 @@ void GpsInterface::enqueue(MicroNMEA& nmea){
               this->flush_queue();
         }
         else
-           this->new_queue();
+          this->new_queue();
 
         this->queue->add(line);
       }
@@ -340,11 +340,11 @@ void GpsInterface::setType(String t){
   else if(t == "navic")
     this->type_flag=GPSTYPE_NAVIC;
   else if(t == "qzss")
-    this->type_flag=GPSTYPE_QZSS;        
+    this->type_flag=GPSTYPE_QZSS;
   else if(t == "beidou")
     this->type_flag=GPSTYPE_BEIDOU;
   else if(t == "beidou_bd")
-    this->type_flag=GPSTYPE_BEIDOU_BD;    
+    this->type_flag=GPSTYPE_BEIDOU_BD;
   else
     this->type_flag=GPSTYPE_ALL;
 }
