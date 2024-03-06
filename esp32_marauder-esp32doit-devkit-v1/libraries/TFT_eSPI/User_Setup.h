@@ -68,9 +68,9 @@
 
 // #define ST7735_INITB
 // #define ST7735_GREENTAB
-// #define ST7735_GREENTAB2
- #define ST7735_GREENTAB3
-// #define ST7735_GREENTAB128    // For 128 x 128 display
+//#define ST7735_GREENTAB2
+#define ST7735_GREENTAB3
+//#define ST7735_GREENTAB128    // For 128 x 128 display
 // #define ST7735_GREENTAB160x80 // For 160 x 80 display (BGR, inverted, 26 offset)
 // #define ST7735_REDTAB
 // #define ST7735_BLACKTAB
@@ -176,15 +176,15 @@
 //#define TFT_BL   32
 
 // MarauderMini-x 128x128 OFF
-//#define TFT_MISO -1
-//#define TFT_MOSI 23 //SDA
-//#define TFT_SCLK 18 //SCK
+#define TFT_MISO 19
+#define TFT_MOSI 23 //SDA
+#define TFT_SCLK 18 //SCK
 #define TFT_CS 2 //CS
 #define TFT_DC 26 //AO
 #define TFT_RST 5 //RESET
 #define TOUCH_CS -1
-//#define TFT_BL -1 //LED
-//#define SD_CS 4
+#define TFT_BL 32 //LED
+#define SD_CS 4
 
 /*
 // ESP32 Marauder
