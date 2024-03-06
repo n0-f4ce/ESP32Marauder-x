@@ -2,8 +2,11 @@
 
 AsyncWebServer server(80);
 
+
 EvilPortal::EvilPortal() {
 }
+char apName[MAX_AP_NAME_SIZE] = "PORTAL";
+char index_html[MAX_HTML_SIZE] = "TEST";
 
 void EvilPortal::setup() {
   this->runServer = false;
@@ -30,7 +33,7 @@ bool EvilPortal::begin(LinkedList<ssid>* ssids, LinkedList<AccessPoint>* access_
     return false;
   if (!this->setHtml())
     return false;
-    
+
   startPortal();
 
   return true;
@@ -159,7 +162,7 @@ bool EvilPortal::setAP(LinkedList<ssid>* ssids, LinkedList<AccessPoint>* access_
     }
     // Config file good. Proceed
     else {
-      // ap name too long. return false        
+      // ap name too long. return false
       if (ap_config_file.size() > MAX_AP_NAME_SIZE) {
         #ifdef HAS_SCREEN
           this->sendToDisplay("The given AP name is too large.");
