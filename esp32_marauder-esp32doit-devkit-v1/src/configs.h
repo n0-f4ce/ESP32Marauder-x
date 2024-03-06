@@ -246,10 +246,10 @@
       #define D_BTN 35
 
       #define HAS_L
-      #define HAS_R
-      #define HAS_U
-      #define HAS_D
       #define HAS_C
+      #define HAS_U
+      #define HAS_R
+      #define HAS_D
 
       #define L_PULL true
       #define C_PULL true
@@ -568,13 +568,13 @@
 
     #ifdef MARAUDER_MINI
       #define SCREEN_CHAR_WIDTH 40
-      #define TFT_MISO -1
+      #define TFT_MISO 19
       #define TFT_MOSI 23
       #define TFT_SCLK 18
       #define TFT_CS 2
       #define TFT_DC 26
       #define TFT_RST 5
-      #define TFT_BL -1
+      #define TFT_BL 32
       #define TOUCH_CS -1
       #define SD_CS 4
 
