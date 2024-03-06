@@ -22,7 +22,7 @@ extern SDInterface sd_obj;
 #ifdef HAS_SCREEN
   extern Display display_obj;
 #endif
-extern Buffer buffer_obj; 
+extern Buffer buffer_obj;
 
 #define WAITING 0
 #define GOOD 1
@@ -36,8 +36,8 @@ extern Buffer buffer_obj;
 #define MAX_AP_NAME_SIZE 30
 #define WIFI_SCAN_EVIL_PORTAL 30
 
-char apName[MAX_AP_NAME_SIZE] = "PORTAL";
-char index_html[MAX_HTML_SIZE] = "TEST";
+extern char apName[MAX_AP_NAME_SIZE];
+extern char index_html[MAX_HTML_SIZE];
 
 struct ssid {
   String essid;
