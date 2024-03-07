@@ -987,8 +987,8 @@
       #define mac_history_len 512
     #elif defined(MARAUDER_MINI)
       #define GPS_SERIAL_INDEX 2
-      #define GPS_TX 21
-      #define GPS_RX 22
+      #define GPS_TX 17
+      #define GPS_RX 16
       #define mac_history_len 512
     #elif defined(MARAUDER_FLIPPER)
       #define GPS_SERIAL_INDEX 1
