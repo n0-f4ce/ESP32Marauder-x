@@ -4,6 +4,6 @@
 .vscode/launch.json
 .vscode/ipch
 .history/
-.DS_Store*
+.DS_Store
 .gitignore
 esp32_marauder.ino.cpp
