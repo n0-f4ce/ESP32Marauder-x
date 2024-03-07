@@ -27,7 +27,7 @@
   #ifdef MARAUDER_M5STICKC
     #define HARDWARE_NAME "M5Stick-C Plus"
   #elif defined(MARAUDER_MINI)
-    #define HARDWARE_NAME "Marauder Mini"
+    #define HARDWARE_NAME "MarauderMini-X"
   #elif defined(MARAUDER_REV_FEATHER)
     #define HARDWARE_NAME "Adafruit Feather ESP32-S2 Reverse TFT"
   #elif defined(MARAUDER_V4)
