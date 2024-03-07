@@ -8,7 +8,7 @@
 #ifdef HAS_SCREEN
   #include "MenuFunctions.h"
   #include "Display.h"
-#endif 
+#endif
 
 #include "WiFiScan.h"
 //#include "Web.h"
@@ -181,7 +181,7 @@ class CommandLine {
     "                      @@@@@@                \r\n"
     "                        @@@@                \r\n"
     "\r\n";
-        
+
   public:
     CommandLine();
 
