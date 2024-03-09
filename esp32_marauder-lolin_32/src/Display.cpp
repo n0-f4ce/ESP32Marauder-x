@@ -18,36 +18,9 @@ void Display::RunSetup()
   #ifdef SCREEN_BUFFER
     screen_buffer = new LinkedList<String>();
   #endif
-  
+
   tft.init();
-  #ifndef MARAUDER_M5STICKC
-    tft.setRotation(0); // Portrait
-  #endif
-
-  #ifdef MARAUDER_M5STICKC
-    tft.setRotation(1);
-  #endif
-
-  #ifdef MARAUDER_REV_FEATHER
-    tft.setRotation(1);
-  #endif
-
   tft.setCursor(0, 0);
-
-  #ifdef HAS_ILI9341
-
-    #ifdef TFT_SHIELD
-      uint16_t calData[5] = { 275, 3494, 361, 3528, 4 }; // tft.setRotation(0); // Portrait with TFT Shield
-      //Serial.println(F("Using TFT Shield"));
-    #else if defined(TFT_DIY)
-      uint16_t calData[5] = { 339, 3470, 237, 3438, 2 }; // tft.setRotation(0); // Portrait with DIY TFT
-      //Serial.println(F("Using TFT DIY"));
-    #endif
-    tft.setTouch(calData);
-
-  #endif
-
-  //tft.fillScreen(TFT_BLACK);
   clearScreen();
 
   //Serial.println("SPI_FREQUENCY: " + (String)SPI_FREQUENCY);
@@ -111,14 +84,14 @@ void Display::tftDrawEapolColorKey()
 {
   //Display color key
   tft.setTextSize(1); tft.setTextColor(TFT_WHITE);
-  tft.fillRect(14, 0, 15, 8, TFT_CYAN); tft.setCursor(30, 0); tft.print(" - EAPOL"); 
+  tft.fillRect(14, 0, 15, 8, TFT_CYAN); tft.setCursor(30, 0); tft.print(" - EAPOL");
 }
 
 void Display::tftDrawColorKey()
 {
   //Display color key
   tft.setTextSize(1); tft.setTextColor(TFT_WHITE);
-  tft.fillRect(14, 0, 15, 8, TFT_GREEN); tft.setCursor(30, 0); tft.print(" - Beacons"); 
+  tft.fillRect(14, 0, 15, 8, TFT_GREEN); tft.setCursor(30, 0); tft.print(" - Beacons");
   tft.fillRect(14, 8, 15, 8, TFT_RED); tft.setCursor(30, 8); tft.print(" - Deauths");
   tft.fillRect(14, 16, 15, 8, TFT_BLUE); tft.setCursor(30, 16); tft.print(" - Probes");
 }
@@ -311,7 +284,7 @@ void Display::displayBuffer(bool do_clear)
           blank[(18+(yStart - TOP_FIXED_AREA_2) / TEXT_HEIGHT)%19] = xPos;
       #else
         xPos = 0;
-        if (this->screen_buffer->size() >= MAX_SCREEN_BUFFER) 
+        if (this->screen_buffer->size() >= MAX_SCREEN_BUFFER)
           this->scrollScreenBuffer();
 
         screen_buffer->add(display_buffer->shift());
@@ -371,7 +344,7 @@ int Display::scroll_line(uint32_t color) {
   if (!tteBar)
   {
     tft.fillRect(0,yStart,blank[(yStart-TOP_FIXED_AREA)/TEXT_HEIGHT],TEXT_HEIGHT, color);
-  
+
     // Change the top of the scroll area
     yStart+=TEXT_HEIGHT;
     // The value must wrap around as the screen memory is a circular buffer
@@ -380,7 +353,7 @@ int Display::scroll_line(uint32_t color) {
   else
   {
     tft.fillRect(0,yStart,blank[(yStart-TOP_FIXED_AREA_2)/TEXT_HEIGHT],TEXT_HEIGHT, color);
-  
+
     // Change the top of the scroll area
     yStart+=TEXT_HEIGHT;
     // The value must wrap around as the screen memory is a circular buffer
@@ -764,7 +737,7 @@ void Display::listDir(fs::FS &fs, const char * dirname, uint8_t levels) {
 void Display::updateBanner(String msg)
 {
   //this->img.deleteSprite();
-  
+
   //this->img.setColorDepth(8);
 
   //this->img.createSprite(SCREEN_WIDTH, TEXT_HEIGHT);
@@ -816,7 +789,7 @@ void Display::buildBanner(String msg, int xpos)
 }
 
 void Display::main(uint8_t scan_mode)
-{  
+{
   if ((scan_mode == LV_JOIN_WIFI) ||
       (scan_mode == LV_ADD_SSID))
     lv_task_handler();
