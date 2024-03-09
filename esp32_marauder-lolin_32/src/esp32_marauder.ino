@@ -261,15 +261,7 @@ void setup()
   #endif
 
   // Do some LED stuff
-  #ifdef MARAUDER_FLIPPER
-    flipper_led.RunSetup();
-  #elif defined(XIAO_ESP32_S3)
-    xiao_led.RunSetup();
-  #elif defined(MARAUDER_M5STICKC)
-    stickc_led.RunSetup();
-  #else
-    led_obj.RunSetup();
-  #endif
+  led_obj.RunSetup();
 
   #ifdef HAS_SCREEN
     display_obj.tft.println(F(text_table0[7]));
@@ -369,15 +361,7 @@ void loop()
     #endif
     //cli_obj.main(currentTime);
   }
-  #ifdef MARAUDER_FLIPPER
-    flipper_led.main();
-  #elif defined(XIAO_ESP32_S3)
-    xiao_led.main();
-  #elif defined(MARAUDER_M5STICKC)
-    stickc_led.main();
-  #else
-    led_obj.main(currentTime);
-  #endif
+  led_obj.main(currentTime);
 
   //if (wifi_scan_obj.currentScanMode == OTA_UPDATE)
   //  web_obj.main();
