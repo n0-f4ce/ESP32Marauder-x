@@ -34,13 +34,7 @@ https://www.online-utility.org/image/convert/to/XBM
 #endif
 #include "Buffer.h"
 
-#ifdef MARAUDER_FLIPPER
-  #include "flipperLED.h"
-#elif defined(XIAO_ESP32_S3)
-  #include "xiaoLED.h"
-#elif defined(MARAUDER_M5STICKC)
-  #include "stickcLED.h"
-#elif defined(HAS_NEOPIXEL_LED)
+#ifdef HAS_NEOPIXEL_LED
   #include "LedInterface.h"
 #endif
 
@@ -83,6 +77,7 @@ EvilPortal evil_portal_obj;
 Buffer buffer_obj;
 Settings settings_obj;
 CommandLine cli_obj;
+LedInterface led_obj;
 
 #ifdef HAS_GPS
   GpsInterface gps_obj;
@@ -101,19 +96,6 @@ CommandLine cli_obj;
   SDInterface sd_obj;
 #endif
 
-#ifdef MARAUDER_M5STICKC
-  AXP192 axp192_obj;
-#endif
-
-#ifdef MARAUDER_FLIPPER
-  flipperLED flipper_led;
-#elif defined(XIAO_ESP32_S3)
-  xiaoLED xiao_led;
-#elif defined(MARAUDER_M5STICKC)
-  stickcLED stickc_led;
-#else
-  LedInterface led_obj;
-#endif
 
 const String PROGMEM version_number = MARAUDER_VERSION;
 
@@ -127,7 +109,7 @@ uint32_t currentTime  = 0;
 void backlightOn() {
   #ifdef HAS_SCREEN
     #ifdef MARAUDER_MINI
-      digitalWrite(TFT_BL, LOW);
+      digitalWrite(TFT_BL, HIGH);
     #endif
 
     #ifndef MARAUDER_MINI
@@ -139,7 +121,7 @@ void backlightOn() {
 void backlightOff() {
   #ifdef HAS_SCREEN
     #ifdef MARAUDER_MINI
-      digitalWrite(TFT_BL, HIGH);
+      digitalWrite(TFT_BL, LOW);
     #endif
 
     #ifndef MARAUDER_MINI
@@ -151,10 +133,6 @@ void backlightOff() {
 
 void setup()
 {
-  #ifdef MARAUDER_M5STICKC
-    axp192_obj.begin();
-  #endif
-
   #ifdef HAS_SCREEN
     pinMode(TFT_BL, OUTPUT);
   #endif
