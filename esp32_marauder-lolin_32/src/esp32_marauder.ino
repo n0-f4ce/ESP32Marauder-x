@@ -171,7 +171,7 @@ void setup()
 
   // Draw the title screen
   #ifdef HAS_SCREEN
-    #ifndef MARAUDER_MINI
+    #ifdef MARAUDER_MINI
       display_obj.drawJpeg("/marauder3L.jpg", 0 , 0);     // 240 x 320 image
     #else
       display_obj.drawJpeg("/marauder3L.jpg", 0, 0);
@@ -179,11 +179,11 @@ void setup()
   #endif
 
   #ifdef HAS_SCREEN
-    #ifndef MARAUDER_MINI
+    #ifdef MARAUDER_MINI
       display_obj.tft.drawCentreString(display_obj.version_number, 120, 250, 2);
     #endif
 
-    #ifdef MARAUDER_MINI
+    #ifndef MARAUDER_MINI
       display_obj.tft.drawCentreString(display_obj.version_number, TFT_WIDTH/2, TFT_HEIGHT, 1);
     #endif
   #endif

@@ -80,20 +80,20 @@
       #define BANNER_TEXT_SIZE 1
 
       #ifndef TFT_WIDTH
-        #define TFT_WIDTH 128
+        #define TFT_WIDTH 240
       #endif
 
       #ifndef TFT_HEIGHT
-        #define TFT_HEIGHT 128
+        #define TFT_HEIGHT 320
       #endif
 
       #define CHAR_WIDTH 6
-      #define SCREEN_WIDTH TFT_WIDTH // Originally 240
-      #define SCREEN_HEIGHT TFT_HEIGHT // Originally 320
+      #define SCREEN_WIDTH TFT_WIDTH
+      #define SCREEN_HEIGHT TFT_HEIGHT
       #define HEIGHT_1 TFT_WIDTH
       #define WIDTH_1 TFT_WIDTH
       #define STANDARD_FONT_CHAR_LIMIT (TFT_WIDTH/6) // number of characters on a single line with normal font
-      #define TEXT_HEIGHT (TFT_HEIGHT/10) // Height of text to be printed and scrolled
+      #define TEXT_HEIGHT 16 // Height of text to be printed and scrolled
       #define BOT_FIXED_AREA 0 // Number of lines in bottom fixed area (lines counted from bottom of screen)
       #define TOP_FIXED_AREA 48 // Number of lines in top fixed area (lines counted from top of screen)
       #define YMAX TFT_HEIGHT // Bottom of screen area
@@ -103,9 +103,9 @@
       //#define MENU_FONT &FreeMonoBold9pt7b
       //#define MENU_FONT &FreeSans9pt7b
       //#define MENU_FONT &FreeSansBold9pt7b
-      #define BUTTON_SCREEN_LIMIT 10
+      #define BUTTON_SCREEN_LIMIT 12
       #define BUTTON_ARRAY_LEN 100
-      #define STATUS_BAR_WIDTH (TFT_HEIGHT/16)
+      #define STATUS_BAR_WIDTH 16
       #define LVGL_TICK_PERIOD 6
       #define FRAME_X 100
       #define FRAME_Y 64
@@ -129,7 +129,7 @@
   //// MENU DEFINITIONS
 
   #ifdef MARAUDER_MINI
-    #define BANNER_TIME 50
+    #define BANNER_TIME 100
     #define COMMAND_PREFIX "!"
     // Keypad start position, key sizes and spacing
     #define KEY_X (TFT_WIDTH/2) // Centre of key
